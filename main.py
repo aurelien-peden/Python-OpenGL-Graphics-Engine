@@ -19,6 +19,7 @@ class GraphicsEngine:
 
         # Detect and use existing OpenGL context
         self.ctx = mgl.create_context()
+        self.ctx.enable(mgl.DEPTH_TEST | mgl.CULL_FACE) # enable depth test and culling of back faces
 
         self.clock = pg.time.Clock()
         self.time = 0
