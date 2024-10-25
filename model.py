@@ -64,6 +64,7 @@ class Cube:
     def update(self):
         m_model = glm.rotate(self.m_model, self.app.time * 0.5, glm.vec3(0, 1, 0)) # rotate around y-axis
         self.shader_program['m_model'].write(m_model) # update model matrix
+        self.shader_program['m_view'].write(self.app.camera.m_view) # update view matrix
 
     def get_model_matrix(self):
         m_model = glm.mat4() # 4x4 identity matrix

@@ -17,12 +17,16 @@ class GraphicsEngine:
         pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
         pg.display.set_mode(self.WIN_SIZE, flags=pg.OPENGL | pg.DOUBLEBUF)
 
+        pg.event.set_grab(True) # grab the mouse
+        pg.mouse.set_visible(False) # hide the mouse cursor
+
         # Detect and use existing OpenGL context
         self.ctx = mgl.create_context()
         self.ctx.enable(mgl.DEPTH_TEST | mgl.CULL_FACE) # enable depth test and culling of back faces
 
         self.clock = pg.time.Clock()
         self.time = 0
+        self.delta_time = 0
 
         # camera
         self.camera = Camera(self)
@@ -53,8 +57,9 @@ class GraphicsEngine:
         while True:
             self.get_time()
             self.check_events()
+            self.camera.update()
             self.render()
-            self.clock.tick(60)
+            self.delta_time = self.clock.tick(60)
 
 if __name__ == '__main__':
     app = GraphicsEngine()
