@@ -31,16 +31,12 @@ class GraphicsEngine:
         self.time = 0
         self.delta_time = 0
 
-        # light
         self.light = Light()
 
-        # camera
         self.camera = Camera(self)
 
         self.mesh = Mesh(self)
 
-        # scene
-        #self.scene = Triangle(self)
         self.scene = Scene(self)
     
     def check_events(self):

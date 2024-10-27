@@ -4,8 +4,11 @@ import pygame as pg
 
 
 class BaseModel:
-    def __init__(self, app, vao_name, texture_id):
+    def __init__(self, app, vao_name, texture_id, pos=(0, 0, 0), rotation=(0, 0, 0), scale=(1, 1, 1)):
         self.app = app
+        self.pos = pos
+        self.rotation = glm.vec3([glm.radians(i) for i in rotation])
+        self.scale = scale
         self.m_model = self.get_model_matrix()
         self.texture_id = texture_id
         self.vao = app.mesh.vao.vaos[vao_name]
@@ -16,6 +19,14 @@ class BaseModel:
 
     def get_model_matrix(self):
         m_model = glm.mat4()
+
+        m_model = glm.translate(m_model, self.pos)
+
+        m_model = glm.rotate(m_model, self.rotation.x, glm.vec3(1, 0, 0))
+        m_model = glm.rotate(m_model, self.rotation.y, glm.vec3(0, 1, 0))
+        m_model = glm.rotate(m_model, self.rotation.z, glm.vec3(0, 0, 1))
+
+        m_model = glm.scale(m_model, self.scale)
         return m_model
     
     def render(self):
@@ -24,8 +35,8 @@ class BaseModel:
 
 
 class Cube(BaseModel):
-    def __init__(self, app, vao_name='cube', texture_id=0):
-        super().__init__(app, vao_name, texture_id)
+    def __init__(self, app, vao_name='cube', texture_id=0, pos=(0, 0, 0), rotation=(0, 0, 0), scale=(1, 1, 1)):
+        super().__init__(app, vao_name, texture_id, pos, rotation, scale)
         self.on_init()
 
     def on_init(self):
