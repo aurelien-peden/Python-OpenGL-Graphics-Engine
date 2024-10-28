@@ -11,9 +11,14 @@ class Scene:
 
     def load(self):
         app = self.app
-        self.add_object(Cube(app))
-        self.add_object(Cube(app, texture_id=1, pos=(-4, 0, 0), rotation=(45, 0, 0), scale=(1, 4, 1)))
-        self.add_object(Cube(app, texture_id=2, pos=(4, 0, 0), rotation=(0, 45, 0), scale=(1, 4, 1)))
+
+        n, s = 30, 3
+        for x in range(-n, n, s):
+            for z in range(-n, n, s):
+                    self.add_object(Cube(app, texture_id=1, pos=(x, -s, z)))
+
+        self.add_object(Cat(app, texture_id=3, pos=(0, -2, -10), rotation=(-90, 0, 0), scale=(0.3, 0.3, 0.3)))
+        
 
     def render(self):
         for obj in self.objects:
