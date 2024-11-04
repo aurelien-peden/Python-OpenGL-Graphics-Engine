@@ -1,11 +1,11 @@
 import pygame as pg
 import moderngl as mgl
 import sys
-from model import *
-from camera import Camera
-from light import Light
-from mesh import Mesh
-from scene import Scene
+from src.model import *
+from src.camera import Camera
+from src.light import Light
+from src.mesh import Mesh
+from src.scene import Scene
 
 class GraphicsEngine:
     """

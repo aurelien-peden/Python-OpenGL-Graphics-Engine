@@ -1,4 +1,4 @@
-from model import *
+from .model import *
 
 class Scene:
     """
@@ -59,7 +59,9 @@ class Scene:
             for z in range(-n, n, s):
                     self.add_object(Cube(app, texture_id=1, pos=(x, -s, z)))
 
-        self.add_object(Cat(app, texture_id=3, pos=(0, -2, -10), rotation=(-90, 0, 0), scale=(0.3, 0.3, 0.3)))
+        self.add_object(Cube(app, texture_id=0, pos=(15, 5, 10), rotation=(0, 0, 0), scale=(4, 1, 4)))
+        self.add_object(Cube(app, texture_id=2, pos=(10, 0, 10), rotation=(-45, 30, 0), scale=(2, 1, 1)))
+        self.add_object(Cat(app, texture_id=3, pos=(0, -2, -10), rotation=(-90, 0, -90), scale=(0.3, 0.3, 0.3)))
         
 
     def render(self):
