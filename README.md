@@ -2,7 +2,7 @@
 
 Welcome to my **3D Graphics Engine** project! This is a custom-built graphics engine developed in Python with ModernGL and OpenGL, showcasing essential real-time rendering techniques, 3D object manipulation, and GPU-accelerated computations using GLSL shaders.
 
-![Engine Screenshot](./screenshots/screenshot1.png) *(Replace with a screenshot of your engine in action)*
+![Engine Screenshot](./screenshots/screenshot1.png) 
 
 ## Features
 
