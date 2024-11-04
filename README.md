@@ -42,8 +42,8 @@ pip install -r requirements.txt
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/3d-graphics-engine.git
-   cd 3d-graphics-engine
+   git clone https://github.com/aurelien-peden/Python-OpenGL-Graphics-Engine.git
+   cd Python\ OpenGL\ Graphic\ Engine
    ```
 
 2. **Run the main script**:
