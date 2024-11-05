@@ -34,10 +34,10 @@ class VAO:
 
         # Cube
         self.vaos['cube'] = self.get_vao(program=self.program.programs['default'],
-                            vbo=self.vbo.vbos['cube'])
-        
+                                         vbo=self.vbo.vbos['cube'])
+
         self.vaos['cat'] = self.get_vao(program=self.program.programs['default'],
-                            vbo=self.vbo.vbos['cat'])
+                                        vbo=self.vbo.vbos['cat'])
 
     def get_vao(self, program, vbo):
         """
@@ -49,15 +49,16 @@ class VAO:
             The created Vertex Array Object (VAO).
         """
 
-        vao = self.ctx.vertex_array(program, [(vbo.vbo, vbo.format, *vbo.attribs)], skip_errors=True)
+        vao = self.ctx.vertex_array(
+            program, [(vbo.vbo, vbo.format, *vbo.attribs)], skip_errors=True)
         return vao
-    
+
     def destroy(self):
         """
         Destroys the Vertex Array Object (VAO) by releasing its associated resources.
         This method calls the destroy methods of the Vertex Buffer Object (VBO) and the shader program
         to ensure that all allocated resources are properly released.
         """
-        
+
         self.vbo.destroy()
         self.program.destroy()

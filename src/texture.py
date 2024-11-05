@@ -1,6 +1,7 @@
 import pygame as pg
 import moderngl as mgl
 
+
 class Texture:
     """
     A class to manage textures in an OpenGL context using Pygame.
@@ -45,15 +46,17 @@ class Texture:
         """
 
         texture = pg.image.load(path).convert()
-        texture = pg.transform.flip(texture, False, True) # flip image vertically because the y-axis is inverted in pygame
-        texture = self.ctx.texture(size=texture.get_size(), components=3, data=pg.image.tostring(texture, 'RGB'))
-        
+        # flip image vertically because the y-axis is inverted in pygame
+        texture = pg.transform.flip(texture, False, True)
+        texture = self.ctx.texture(size=texture.get_size(
+        ), components=3, data=pg.image.tostring(texture, 'RGB'))
+
         # mimaps
         texture.filter = (mgl.LINEAR_MIPMAP_LINEAR, mgl.LINEAR)
         texture.build_mipmaps()
         texture.anisotropy = 32.0
         return texture
-    
+
     def destroy(self):
         """
         Releases all textures managed by this instance.

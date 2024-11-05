@@ -62,7 +62,7 @@ class BaseModel:
 
         m_model = glm.scale(m_model, self.scale)
         return m_model
-    
+
     def render(self):
         """
         Renders the model by updating its state and invoking the render method
@@ -145,6 +145,7 @@ class Cube(BaseModel):
         self.program['camPos'].write(self.camera.position)
         self.program['m_view'].write(self.camera.m_view)
         self.program['m_model'].write(self.m_model)
+
 
 class Cat(BaseModel):
     """

@@ -7,6 +7,7 @@ FAR = 100
 SPEED = 0.01
 SENSIVITY = 0.05
 
+
 class Camera:
     """
     A class to represent a camera in a 3D OpenGL graphic engine.
