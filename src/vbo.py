@@ -29,6 +29,7 @@ class VBO:
         for vbo in self.vbos.values():
             vbo.destroy()
 
+
 class BaseVBO:
     """
     BaseVBO is a base class for creating Vertex Buffer Objects (VBOs) in an OpenGL context.
@@ -70,7 +71,7 @@ class BaseVBO:
         vertex_data = self.get_vertex_data()
         vbo = self.ctx.buffer(vertex_data)
         return vbo
-    
+
     def destroy(self):
         """
         Releases the Vertex Buffer Object (VBO) resources.
@@ -116,7 +117,7 @@ class CubeVBO(BaseVBO):
 
         data = [vertices[ind] for triangle in indices for ind in triangle]
         return np.array(data, dtype='f4')
-    
+
     def get_vertex_data(self):
         """
         Generates and returns the vertex data for a 3D object, including vertex positions, 
@@ -126,8 +127,8 @@ class CubeVBO(BaseVBO):
                         and normals for the 3D object.
         """
 
-        vertices = [(-1, -1, 1), ( 1, -1,  1), (1,  1,  1), (-1, 1,  1),
-                    (-1, 1, -1), (-1, -1, -1), (1, -1, -1), ( 1, 1, -1)]
+        vertices = [(-1, -1, 1), (1, -1,  1), (1,  1,  1), (-1, 1,  1),
+                    (-1, 1, -1), (-1, -1, -1), (1, -1, -1), (1, 1, -1)]
 
         indices = [(0, 2, 3), (0, 1, 2),
                    (1, 7, 2), (1, 6, 7),
@@ -146,18 +147,19 @@ class CubeVBO(BaseVBO):
                              (3, 1, 2), (3, 0, 1),]
         tex_coord_data = self.get_data(tex_coord_vertices, tex_coord_indices)
 
-        normals = [( 0, 0, 1) * 6,
-                   ( 1, 0, 0) * 6,
-                   ( 0, 0,-1) * 6,
+        normals = [(0, 0, 1) * 6,
+                   (1, 0, 0) * 6,
+                   (0, 0, -1) * 6,
                    (-1, 0, 0) * 6,
-                   ( 0, 1, 0) * 6,
-                   ( 0,-1, 0) * 6,]
+                   (0, 1, 0) * 6,
+                   (0, -1, 0) * 6,]
         normals = np.array(normals, dtype='f4').reshape(36, 3)
 
         vertex_data = np.hstack([normals, vertex_data])
         vertex_data = np.hstack([tex_coord_data, vertex_data])
         return vertex_data
-    
+
+
 class CatVBO(BaseVBO):
     """
     A class used to represent a Vertex Buffer Object (VBO) for a cat model.

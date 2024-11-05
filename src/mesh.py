@@ -27,6 +27,6 @@ class Mesh:
         This method destroys the Vertex Array Object (VAO) and the texture
         associated with the mesh to free up GPU resources.
         """
-        
+
         self.vao.destroy()
         self.texture.destroy()
